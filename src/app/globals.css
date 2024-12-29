@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  img {
+    @apply pointer-events-none;
+  }
+
+  .text-gradient {
+    @apply text-transparent bg-clip-text inline;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-reveal {
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    -webkit-animation: reveal 1s linear forwards;
+    -moz-animation: reveal 1s linear forwards;
+    animation: reveal 1s linear forwards;
+    animation-timeline: view();
+    -webkit-background-clip: text;
+    animation-range-start: 30vh;
+    animation-range-end: 100vh;
+  }
+  @media (max-width: 768px) {
+    .text-reveal {
+      animation-range-start: 30vh;
+      animation-range-end: 100vh;
+    }
+  }
+  @keyframes reveal {
+    to {
+      background-size: 100% 100%;
+    }
+  }
+}
